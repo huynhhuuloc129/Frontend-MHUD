@@ -9,7 +9,7 @@ html{
 }
 #grid{
     display: grid;
-    grid-template-columns: repeat(6, 160px);
+    grid-template-columns: repeat(6, 140px);
 }
 .element{
     border: 1px solid black;

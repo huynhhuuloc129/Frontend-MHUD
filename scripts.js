@@ -9,6 +9,7 @@ function initScreen(){
         for (let i=1; i<=total; i++) {
             req.push( $(`input[name="type${i}"]:checked`).val());
         }
+        console.log(req);
         // fetch('http://82e9-34-125-224-136.ngrok.io/predict', {
         //     method: 'POST',
         //     headers: {
@@ -36,42 +37,69 @@ function initScreen(){
         // })
 
 
-        $.ajax({
-            url: 'http://58f1-35-233-207-164.ngrok.io/predict',
-            type: "POST",
-            headers: {
-                'Content-Type':'application/json',
-                'Access-Control-Allow-Origin': '*'
-            },
-            dataType: "json",
-            data: JSON.stringify(req),
-            success: function (result) {
-                alert(result)
+        // $.ajax({
+        //     url: 'http://58f1-35-233-207-164.ngrok.io/predict',
+        //     type: "POST",
+        //     headers: {
+        //         'Content-Type':'application/json',
+        //         'Access-Control-Allow-Origin': '*'
+        //     },
+        //     dataType: "json",
+        //     data: JSON.stringify(req),
+        //     success: function (result) {
+        //         alert(result)
 
-            },
-            error: function () {
-                console.log("error");
-            }
-        });
+        //     },
+        //     error: function () {
+        //         console.log("error");
+        //     }
+        // });
 
     })
     for (let i=1; i<=total; i++) {
-        $("#grid").append(
-            `<div class="element element${i}">
-                <input type="radio" name="type${i}" value="f" required>
-                <label for="f">f</label>
-                <input type="radio" name="type${i}" value="l" required>
-                <label for="l">l</label>
-                <input type="radio" name="type${i}" value="t" required>
-                <label for="t">t</label><br>
-                <input type="radio" name="type${i}" value="n" required>
-                <label for="n">n</label>
-                <input type="radio" name="type${i}" value="w" required>
-                <label for="w">w</label>
-                <input type="radio" name="type${i}" value="g" required>
-                <label for="g">g</label><br>
-            </div>`
-        );
+        switch (i) {
+            case 13:
+                $("#grid").append(
+                    `<div class="element element${i}">
+                        <input type="radio" name="type${i}" value="l" required checked="true">
+                        <label for="l">l</label>
+                        <input type="radio" name="type${i}" value="g" required>
+                        <label for="g">g</label>
+                    </div>`
+                );
+                break;
+            case 15:
+                $("#grid").append(
+                    `<div class="element element${i}">
+                        <input type="radio" name="type${i}" value="n" required checked="true">
+                        <label for="n">n</label>
+                        <input type="radio" name="type${i}" value="w" required>
+                        <label for="w">w</label>
+                        <input type="radio" name="type${i}" value="b" required>
+                        <label for="b">b</label>
+                    </div>`
+                );
+                break;
+            case 36:
+                $("#grid").append(
+                    `<div class="element element${i}">
+                        <input type="radio" name="type${i}" value="t" required checked="true">
+                        <label for="t">t</label>
+                        <input type="radio" name="type${i}" value="n" required>
+                        <label for="n">n</label>
+                    </div>`
+                );
+                break;
+            default:
+                $("#grid").append(
+                    `<div class="element element${i}">
+                        <input type="radio" name="type${i}" value="f" required checked="true">
+                        <label for="f">f</label>
+                        <input type="radio" name="type${i}" value="t" required>
+                        <label for="t">t</label>
+                    </div>`
+                );
+        }
         if (i==total){
             $("#grid").append(
                 `
