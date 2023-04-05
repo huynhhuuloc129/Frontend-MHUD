@@ -6,9 +6,6 @@ function initScreen(){
     $("#form").on("submit", function(e) {
         e.preventDefault();
         var req = [];
-        var reqTest = {
-            "x_test": ["f","f","f","f","f","f","f","f","t","f","f","f","g","f","n","f","f","t","f","f","f","t","t","f","f","f","f","f","f","f","f","f","f","t","t","t"]
-        }
         for (let i=1; i<=total; i++) {
             req.push( $(`input[name="type${i}"]:checked`).val());
         }
@@ -47,7 +44,7 @@ function initScreen(){
                 'Access-Control-Allow-Origin': '*'
             },
             dataType: "json",
-            data: JSON.stringify(reqTest),
+            data: JSON.stringify(req),
             success: function (result) {
                 alert(result)
 
@@ -61,17 +58,17 @@ function initScreen(){
     for (let i=1; i<=total; i++) {
         $("#grid").append(
             `<div class="element element${i}">
-                <input type="radio" name="type${i}" value="f">
+                <input type="radio" name="type${i}" value="f" required>
                 <label for="f">f</label>
-                <input type="radio" name="type${i}" value="l">
+                <input type="radio" name="type${i}" value="l" required>
                 <label for="l">l</label>
-                <input type="radio" name="type${i}" value="t">
+                <input type="radio" name="type${i}" value="t" required>
                 <label for="t">t</label><br>
-                <input type="radio" name="type${i}" value="n">
+                <input type="radio" name="type${i}" value="n" required>
                 <label for="n">n</label>
-                <input type="radio" name="type${i}" value="w">
+                <input type="radio" name="type${i}" value="w" required>
                 <label for="w">w</label>
-                <input type="radio" name="type${i}" value="g">
+                <input type="radio" name="type${i}" value="g" required>
                 <label for="g">g</label><br>
             </div>`
         );
