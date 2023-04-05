@@ -12,20 +12,42 @@ function initScreen(){
         for (let i=1; i<=total; i++) {
             req.push( $(`input[name="type${i}"]:checked`).val());
         }
+        // fetch('http://82e9-34-125-224-136.ngrok.io/predict', {
+        //     method: 'POST',
+        //     headers: {
+        //         'Accept': 'application/json',
+        //         'Content-Type': 'application/json'
+        //     },
+        //     body: JSON.stringify(reqTest)
+        // })
+        // .then(response => response.json())
+        // .then(response => console.log(JSON.stringify(response)))
+        // $.post('http://6eb8-34-125-219-134.ngrok.io/predict', reqTest, (res) => {
+        //     alert(res)
+        // })
+        // fetch('http://9de6-34-125-79-227.ngrok.io', {
+        //     method: 'POST',
+        //     headers: {
+        //         'Content-Type': 'application/json'
+        //     },
+        //     body: JSON.stringify(reqTest)
+        // }).then(response => {
+        //     if (response.readyState == 4)
+        //         if (response.status == 200)
+        //             var json_data = response.responseText; 
+        //     console.log(json_data)
+        // })
+
+
         $.ajax({
-            url: 'http://efc6-35-222-152-13.ngrok.io/predict',
-            headers: {
-                'Content-Type': 'application/json',
-                "Access-Control-Allow-Origin": "*",
-                'Access-Control-Allow-Methods': 'POST',
-                'Access-Control-Allow-Headers': '*'
-            },
+            url: 'http://58f1-35-233-207-164.ngrok.io/predict',
             type: "POST",
-            crossDomain: true,
-            dataType: "json",
-            data: {
-                reqTest
+            headers: {
+                'Content-Type':'application/json',
+                'Access-Control-Allow-Origin': '*'
             },
+            dataType: "json",
+            data: JSON.stringify(reqTest),
             success: function (result) {
                 alert(result)
 
